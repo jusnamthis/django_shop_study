@@ -1,6 +1,6 @@
 from pipes import Template
 from django.views.generic.base import TemplateView
-from .models import Product
+from .models import Category, Product
 
 # Create your views here.
 
@@ -53,6 +53,7 @@ class ProductPageView(TemplateView):
         context["menu"] = MENU_LINKS
         context["title"] = "Продукты"
         context['products'] = Product.objects.all()
+        context['categories'] = Category.objects.all()
         return context
 
 

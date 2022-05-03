@@ -11,11 +11,10 @@
 <div class="details">
 	<div class="links clearfix">
 		<ul class="links-menu">
-			<li><a href="#" class="active">все</a></li>
-			<li><a href="#">дом</a></li>
-			<li><a href="#">офис</a></li>
-			<li><a href="#">модерн</a></li>
-			<li><a href="#">классика</a></li>
+			<li><a href="#" class="active">ALL</a></li>
+			{% for category in categories %}
+				<li><a href="#">{{ category.name }}</a></li>
+			{% endfor %}
 		</ul>
 	</div>
 	
@@ -69,7 +68,12 @@
 				<div class="related-products clearfix">
 					{% for product in products %}
 						<div class="block">
-							<a href="#"><img src="{% static product.img %}" alt="product_image">
+							<a href="#">
+							{% if product.image %}
+								<img src="{{ product.image.url }}" alt="product_image">
+							{% else %}
+								<img src="{% static 'img/product-51.jpg' %}" alt="product_image">
+							{% endif %}
 								<div class="text">
 									<img src="{% static 'img/icon-hover.png' %}" alt="icon hover">
 									<h4>{{ product.name|title }}</h4>
