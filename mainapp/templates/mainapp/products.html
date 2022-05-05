@@ -11,11 +11,10 @@
 <div class="details">
 	<div class="links clearfix">
 		<ul class="links-menu">
-			<li><a href="#" class="active">все</a></li>
-			<li><a href="#">дом</a></li>
-			<li><a href="#">офис</a></li>
-			<li><a href="#">модерн</a></li>
-			<li><a href="#">классика</a></li>
+			<li><a href="#" class="active">ALL</a></li>
+			{% for category in categories %}
+				<li><a href="#">{{ category.name }}</a></li>
+			{% endfor %}
 		</ul>
 	</div>
 	
@@ -67,34 +66,22 @@
 					<a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt="arrow"></a>
 				</div>
 				<div class="related-products clearfix">
-					<div class="block">
-						<a href="#"><img src="{% static 'img/product-11.jpg' %}" alt="lamp">
-							<div class="text">
-								<img src="{% static 'img/icon-hover.png' %}" alt="icon hover">
-								<h4>Стул повышенного качества</h4>
-								<p>Не оторваться. </p>
-							</div>
-						</a>
-					</div>
-					<div class="block">
-						<a href="#"><img src="{% static 'img/product-21.jpg' %}" alt="chair">
-							<div class="text">
-								<img src="{% static 'img/icon-hover.png' %}" alt="hover">
-								<h4>Стул повышенного качества</h4>
-								<p>Не оторваться. </p>
-							</div>
-						</a>
-					</div>
-					<div class="block">
-						<a href="#"><img src="{% static 'img/product-31.jpg' %}" alt="lamp">
-							<div class="text">
-								<img src="{% static 'img/icon-hover.png' %}" alt="hover">
-								<h4>Стул повышенного качества</h4>
-								<p>Не оторваться. </p>
-							</div>
-						</a>
-					</div>
-					
+					{% for product in products %}
+						<div class="block">
+							<a href="#">
+							{% if product.image %}
+								<img src="{{ product.image.url }}" alt="product_image">
+							{% else %}
+								<img src="{% static 'img/product-51.jpg' %}" alt="product_image">
+							{% endif %}
+								<div class="text">
+									<img src="{% static 'img/icon-hover.png' %}" alt="icon hover">
+									<h4>{{ product.name|title }}</h4>
+									<p>{{ product.description|upper|truncatewords:10 }}</p>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
