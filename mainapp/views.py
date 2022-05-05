@@ -1,4 +1,3 @@
-from pipes import Template
 from django.views.generic.base import TemplateView
 from .models import Category, Product
 
@@ -12,24 +11,24 @@ MENU_LINKS = {
 
 PRODUCTS = [
     {
-        'name': 'Chair 1',
-        'img': 'img/product-11.jpg',
-        'description': 'Very durable chair',
+        "name": "Chair 1",
+        "img": "img/product-11.jpg",
+        "description": "Very durable chair",
     },
     {
-        'name': 'Chair 2',
-        'img': 'img/product-21.jpg',
-        'description': 'Pretty durable chair',
+        "name": "Chair 2",
+        "img": "img/product-21.jpg",
+        "description": "Pretty durable chair",
     },
     {
-        'name': 'Chair 3',
-        'img': 'img/product-31.jpg',
-        'description': 'Such a durable chair',
+        "name": "Chair 3",
+        "img": "img/product-31.jpg",
+        "description": "Such a durable chair",
     },
     {
-        'name': 'Chair 4',
-        'img': 'img/product-31.jpg',
-        'description': 'Badly chair',
+        "name": "Chair 4",
+        "img": "img/product-31.jpg",
+        "description": "Badly chair",
     },
 ]
 
@@ -52,8 +51,8 @@ class ProductPageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["menu"] = MENU_LINKS
         context["title"] = "Продукты"
-        context['products'] = Product.objects.all()
-        context['categories'] = Category.objects.all()
+        context["products"] = Product.objects.all()
+        context["categories"] = Category.objects.all()
         return context
 
 

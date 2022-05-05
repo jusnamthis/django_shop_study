@@ -1,11 +1,12 @@
 from django.db import models
 
+
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return f'{self.id}: {self.name}'
+        return f"{self.id}: {self.name}"
 
 
 class Product(models.Model):
@@ -17,4 +18,4 @@ class Product(models.Model):
     quantity = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
-        return f'{self.id}: {self.name}'
+        return f"{self.id}: {self.name}"
